@@ -1,0 +1,34 @@
+jsx
+import React, { useState, useEffect } from 'react';
+
+function WeatherApp() {
+  const [weather, setWeather] = useState(null);
+  const [city, setCity] = useState('London');
+
+  useEffect(() => {
+    const fetchWeather = async () => {
+      const response = await fetch(`(link unavailable));
+      const data = await response.json();
+      setWeather(data);
+    };
+    fetchWeather();
+  }, [city]);
+
+  return (
+    <div>
+      <h1>Weather App</h1>
+      <input
+        type="text"
+        value={city}
+        onChange={(event) => setCity(event.target.value)}
+      />
+      {weather && (
+        <div>
+          <p>City: {weather.name}</p>
+          <p>Temperature: {weather.main.temp}°C</p>
+          <p>Humidity: {weather.main.humidity}%</p>
+        </div>
+      )}
+    </div>
+  );
+}
