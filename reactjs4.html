@@ -1,0 +1,15 @@
+jsx
+import React, { useState } from 'react';
+
+function QuizApp() {
+  const [questions, setQuestions] = useState([
+    { question: 'What is the capital of France?', answers: ['Paris', 'London', 'Berlin'], correct: 0 },
+    { question: 'What is the largest planet in our solar system?', answers: ['Earth', 'Saturn', 'Jupiter'], correct: 2 },
+  ]);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [score, setScore] = useState(0);
+
+  const handleSubmit = (answerIndex) => {
+    if (answerIndex === questions[currentQuestion].correct) {
+      setScore(score + 1);
+    }
